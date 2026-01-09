@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Task Details{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Task Details</h2>
+
+    {% if task %}
+        <p><strong>ID:</strong> {{ task.id }}</p>
+        <p><strong>Title:</strong> {{ task.title }}</p>
+
+        <p>
+            <strong>Status:</strong>
+            {% if task.status == 'Completed' %}
+                <span class="status status-completed">Completed</span>
+            {% elif task.status == 'In Progress' %}
+                <span class="status status-in-progress">In Progress</span>
+            {% else %}
+                <span class="status status-planned">Pending</span>
+            {% endif %}
+        </p>
+
+        <p><strong>Priority:</strong> {{ task.priority }}</p>
+
+        <p><strong>Due Date:</strong> {{ task.due_date }}</p>
+
+        <br>
+        <div class="nav-links">
+            <a href="/edit/{{ task.id }}" class="btn btn-primary">Edit Task</a>
+        </div>
+
+    {% else %}
+        <div class="info-box warning">
+            Task not found.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -31,7 +31,7 @@ body {
 
 /* Navigation */
 .navbar {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #66baea 0%, #4b86a2 100%);
     padding: 15px 30px;
     display: flex;
     justify-content: space-between;
@@ -40,7 +40,7 @@ body {
 }
 
 .nav-brand a {
-    color: white;
+    color: rgb(255, 255, 255);
     text-decoration: none;
     font-size: 24px;
     font-weight: bold;
@@ -318,6 +318,18 @@ body {
     color: #e53e3e;
     margin-bottom: 15px;
 }
+
+.skill-link {
+    text-decoration: none;
+    font-weight: bold;
+    color: #2b6cb0;
+}
+
+.skill-link:hover {
+    text-decoration: underline;
+    color: #1a4f8b;
+}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {

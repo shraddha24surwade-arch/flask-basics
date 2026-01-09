@@ -14,22 +14,26 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    student_name = "Alex"
+    student_name = "Shraddha"
     return render_template('index.html', name=student_name)  # Pass variable to template as {{ name }}
 
 
 @app.route('/profile')
 def profile():
     user_data = {
-        'name': 'Sarah',
-        'age': 22,
-        'course': 'Web Development',
+        'name': 'Shraddha',
+        'age': 20,
+        'course': 'Deep Learning',
+        'email': 'shraddha24surwade@gmail.com',
+        'city': 'Nashik',
         'is_enrolled': True
     }
     return render_template('profile.html',  # Pass multiple variables to template
                            name=user_data['name'],
                            age=user_data['age'],
                            course=user_data['course'],
+                           email=user_data['email'],
+                           city=user_data['city'],
                            is_enrolled=user_data['is_enrolled'])
 
 
@@ -48,6 +52,16 @@ def projects():
     ]
     return render_template('projects.html', projects=project_list)
 
+@app.route('/grades')
+def grades():
+    grade_list = [
+        {'subject':'Mathematics-3','grade':'O'},
+        {'subject':'Data Structures','grade':'O'},
+        {'subject':'Software Engineering','grade':'A+'},
+        {'subject':'Microprocessor','grade':'O'},
+        {'subject':'Principles of Programming Lang','grade':'A'}
+    ]
+    return render_template('grades.html', grades=grade_list)
 
 if __name__ == '__main__':
     app.run(debug=True)
@@ -68,24 +82,5 @@ if __name__ == '__main__':
 # {% for item in list %}  - For loop
 #   {{ item }}
 # {% endfor %}
-#
-# =============================================================================
-
-# =============================================================================
-# EXERCISES:
-# =============================================================================
-#
-# Exercise 3.1: Add more data
-#   - Add more fields to the profile (email, city, etc.)
-#   - Display them in profile.html
-#
-# Exercise 3.2: Conditional display
-#   - In profile.html, show "Enrolled" or "Not Enrolled" based on is_enrolled
-#   - Use {% if is_enrolled %} ... {% else %} ... {% endif %}
-#
-# Exercise 3.3: Create a grades page
-#   - Create a new route /grades
-#   - Pass a dictionary of subjects and grades
-#   - Display them in a table using a for loop
 #
 # =============================================================================

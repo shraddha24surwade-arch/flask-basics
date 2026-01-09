@@ -18,26 +18,51 @@ app = Flask(__name__)
 # =============================================================================
 
 PERSONAL_INFO = {
-    'name': 'Your Name',
-    'title': 'Web Developer',
+    'name': 'Shraddha',
+    'title': 'Computer Engineer | Web Developer',
     'bio': 'A passionate developer learning Flask and web development.',
-    'email': 'your.email@example.com',
-    'github': 'https://github.com/yourusername',
-    'linkedin': 'https://linkedin.com/in/yourusername',
+    'email': 'shraddha24surwade@gmail.com',
+    'github': 'https://github.com/shraddha24surwade-arch',
+    'linkedin': 'https://linkedin.com/in/shraddha-surwade-b70ab3316',
 }
 
 SKILLS = [
+    {'name': 'C & C++', 'level': 90},
     {'name': 'Python', 'level': 80},
-    {'name': 'HTML/CSS', 'level': 75},
+    {'name': 'HTML', 'level': 75},
+    {'name': 'CSS','level':75},
+    {'name': 'Java', 'level': 70},
+    {'name': 'SQL', 'level': 65},
     {'name': 'Flask', 'level': 60},
-    {'name': 'JavaScript', 'level': 50},
-    {'name': 'SQL', 'level': 45},
 ]
 
 PROJECTS = [
-    {'id': 1, 'name': 'Personal Website', 'description': 'A Flask-powered personal portfolio website.', 'tech': ['Python', 'Flask', 'HTML', 'CSS'], 'status': 'Completed'},
-    {'id': 2, 'name': 'Todo App', 'description': 'A simple task management application.', 'tech': ['Python', 'Flask', 'SQLite'], 'status': 'In Progress'},
-    {'id': 3, 'name': 'Weather Dashboard', 'description': 'Display weather data from an API.', 'tech': ['Python', 'Flask', 'API'], 'status': 'Planned'},
+    {'id': 1, 'name': 'Hospital Management System', 'description': 'A system designed to manage the hospital activities.', 'tech': ['Java','HTML','AWT'], 'status': 'Completed'},
+    {'id': 2, 'name': 'Portfolio Website', 'description': 'A Portfolio website describing my education, skills, projects, etc.', 'tech': ['HTML', 'CSS', 'Bootstrap'], 'status': 'Completed'},
+    {'id': 3, 'name': 'Personal Website', 'description': 'A Flask-powered personal portfolio website.', 'tech': ['Python', 'Flask', 'HTML', 'CSS'], 'status': 'In Progress'},
+    {'id': 4, 'name': 'Todo App', 'description': 'A simple application for task management.', 'tech': ['Python', 'Flask', 'SQLite'], 'status': 'In Progress'},
+    {'id': 5, 'name': 'Weather Dashboard', 'description': 'Display weather data from an API.', 'tech': ['Python', 'Flask', 'API'], 'status': 'Planned'},
+]
+
+BLOG_POSTS = [
+    {
+        'id': 1,
+        'title': 'My Flask Learning Journey',
+        'date': '07 Jan 2026',
+        'content': 'I started learning Flask to build dynamic web applications using Python.'
+    },
+    {
+        'id': 2,
+        'title': 'Why I Love Python',
+        'date': '05 Jan 2026',
+        'content': 'Python is simple, powerful, and perfect for beginners as well as professionals.'
+    },
+    {
+        'id': 3,
+        'title': 'Building My First Personal Website',
+        'date': '02 Jan 2026',
+        'content': 'This website helped me understand routing, templates, and Flask structure.'
+    }
 ]
 
 
@@ -70,6 +95,34 @@ def project_detail(project_id):
     return render_template('project_detail.html', info=PERSONAL_INFO, project=project, project_id=project_id)
 
 
+@app.route('/blog')
+def blog():
+    return render_template(
+        'blog.html',
+        info=PERSONAL_INFO,
+        blogs=BLOG_POSTS
+    )
+
+
+@app.route('/skill/<skill_name>')
+def skill_detail(skill_name):
+    matched_projects = []
+
+    for project in PROJECTS:
+        # check skill inside project tech list (case-insensitive)
+        for tech in project['tech']:
+            if skill_name.lower() in tech.lower():
+                matched_projects.append(project)
+                break
+
+    return render_template(
+        'skill.html',
+        info=PERSONAL_INFO,
+        skill_name=skill_name,
+        projects=matched_projects
+    )
+
+
 @app.route('/contact')
 def contact():
     return render_template('contact.html', info=PERSONAL_INFO)
@@ -94,29 +147,5 @@ if __name__ == '__main__':
 #     ├── projects.html   <- Projects list
 #     ├── project_detail.html <- Single project view
 #     └── contact.html    <- Contact page
-#
-# =============================================================================
-
-# =============================================================================
-# EXERCISES:
-# =============================================================================
-#
-# Exercise 5.1: Personalize your website
-#   - Update PERSONAL_INFO with your real information
-#   - Add your actual skills and projects
-#
-# Exercise 5.2: Add a new page
-#   - Create a /blog route
-#   - Add blog posts data structure
-#   - Create blog.html template
-#
-# Exercise 5.3: Enhance the styling
-#   - Modify static/style.css
-#   - Add your own color scheme
-#   - Make it responsive for mobile
-#
-# Exercise 5.4: Add more dynamic features
-#   - Create a /skill/<skill_name> route
-#   - Show projects that use that skill
 #
 # =============================================================================

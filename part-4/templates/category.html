@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ category_name|capitalize }} Category</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7fafc;
+            max-width: 700px;
+            margin: 50px auto;
+        }
+        .box {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+        a {
+            display: inline-block;
+            margin: 8px 0;
+            padding: 8px 14px;
+            background: #4299e1;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a:hover {
+            background: #3182ce;
+        }
+        nav {
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #edf2f7;
+            border-radius: 5px;
+        }
+        nav a {
+            margin-right: 15px;
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="/links">URL Builder</a>
+        <a href="/product/">Products</a>
+    </nav>
+    
+    <h2>Category: {{ category_name|capitalize }}</h2>
+
+    <p>Select a product:</p>
+
+    {% if category_name == 'electronics' %}
+        <a href="/category/electronics/product/1">Laptop</a><br>
+        <a href="/category/electronics/product/2">Mobile</a>
+
+    {% elif category_name == 'accessories' %}
+        <a href="/category/accessories/product/3">Headphones</a>
+
+    {% else %}
+        <p>No products found for this category.</p>
+    {% endif %}
+
+    <br><br>
+    <a href="/">⬅ Back to Home</a>
+</div>
+
+</body>
+</html>

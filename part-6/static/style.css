@@ -1,0 +1,267 @@
+/*
+=============================================================================
+Flask To-Do List App – Stylesheet
+=============================================================================
+This file is served from /static/style.css
+Linked in base.html using:
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+=============================================================================
+*/
+
+/* -------------------- Reset & Base -------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8fafc;
+    color: #2d3748;
+    line-height: 1.6;
+}
+
+/* -------------------- Navbar -------------------- */
+.navbar {
+    background: linear-gradient(135deg, #66baea 0%, #4b86a2 100%);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-brand a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: #2d3748;                 /* Dark text */
+    background-color: #ffffff;      /* White button */
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.nav-links a:hover {
+    background-color: #edf2f7;
+    color: #2d3748;
+}
+
+.nav-links select {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* tasks Grid */
+.task-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.task-card {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.task-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* -------------------- Layout Container -------------------- */
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+    min-height: calc(100vh - 160px);
+}
+
+/* -------------------- Cards -------------------- */
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+    color: #2d3748;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 10px;
+}
+
+/* -------------------- Task List -------------------- */
+ul {
+    list-style: none;
+}
+
+li {
+    background: #ffffff;
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li a {
+    font-weight: bold;
+    text-decoration: none;
+    color: #2b6cb0;
+}
+
+li a:hover {
+    text-decoration: underline;
+}
+
+/* -------------------- Status Badges -------------------- */
+.status {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.status-completed {
+    background: #c6f6d5;
+    color: #276749;
+}
+
+.status-in-progress {
+    background: #feebc8;
+    color: #c05621;
+}
+
+.status-planned {
+    background: #e9d8fd;
+    color: #6b46c1;
+}
+
+/* -------------------- Forms -------------------- */
+form {
+    margin-top: 10px;
+}
+
+label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 18px;
+    border-radius: 5px;
+    border: 1px solid #cbd5e0;
+    font-size: 15px;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+/* -------------------- Buttons -------------------- */
+.btn {
+    display: inline-block;
+    padding: 10px 22px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* -------------------- Info Boxes -------------------- */
+.info-box {
+    background: #ebf8ff;
+    border-left: 4px solid #4299e1;
+    padding: 15px 20px;
+    border-radius: 0 5px 5px 0;
+    margin-top: 20px;
+}
+
+.info-box.success {
+    background: #f0fff4;
+    border-color: #48bb78;
+}
+
+.info-box.warning {
+    background: #fffaf0;
+    border-color: #ed8936;
+}
+
+/* -------------------- Footer -------------------- */
+.footer {
+    background: #2d3748;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+}
+
+.footer-note {
+    color: #a0aec0;
+    font-size: 14px;
+}
+
+/* -------------------- Responsive -------------------- */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}

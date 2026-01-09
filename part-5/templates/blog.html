@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Blog | {{ info.name }}{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <h2>My Blog</h2>
+        <p>Thoughts, learning, and experiences</p>
+    </div>
+
+    <div class="info-box">
+        <strong>These are my Blogs!!</strong>
+    </div>
+
+    <div class="projects-grid">
+        {% for blog in blogs %}
+        <div class="project-card">
+            <div style="margin-bottom: 20px;">
+                <h3>{{ blog.title }}</h3>
+                <small>{{ blog.date }}</small>
+                <p>{{ blog.content }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

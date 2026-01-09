@@ -55,6 +55,54 @@ def show_links():
     }
     return render_template('links.html', links=links)
 
+@app.route('/product/')  
+def product():
+    return render_template('product.html')
+
+@app.route('/product/<int:product_id>')
+def show_product(product_id):
+    products = {
+        1: {'name': 'Laptop', 'price': 55000},
+        2: {'name': 'Mobile', 'price': 25000},
+        3: {'name': 'Headphones', 'price': 3000},
+    }
+    product = products.get(product_id)
+    return render_template('product.html', product=product, product_id=product_id)
+
+@app.route('/category/<category_name>')
+def show_category(category_name):
+    return render_template('category.html', category_name=category_name)
+
+@app.route('/category/<category_name>/product/<int:product_id>')
+def category_product(category_name, product_id):
+
+    categories = {
+        'electronics': {
+            1: {'name': 'Laptop', 'price': 55000},
+            2: {'name': 'Mobile', 'price': 25000},
+        },
+        'accessories': {
+            3: {'name': 'Headphones', 'price': 3000},
+        }
+    }
+
+    category = categories.get(category_name)
+    product = None
+
+    if category:
+        product = category.get(product_id)
+
+    return render_template(
+        'category_product.html',
+        category_name=category_name,
+        product=product,
+        product_id=product_id,
+        category=category
+    )
+
+@app.route('/search/<query>')
+def search(query):
+    return render_template('search.html', query=query)
 
 if __name__ == '__main__':
     app.run(debug=True)

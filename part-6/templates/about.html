@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>About This App</h2>
+
+    <p>
+        This is a Flask-based To-Do List application built to practice:
+    </p>
+
+    <ul>
+        <li>Flask routing</li>
+        <li>Template inheritance</li>
+        <li>Jinja2 loops & conditionals</li>
+        <li>Static CSS integration</li>
+    </ul>
+
+    <div class="info-box success">
+        All data is stored in memory and resets when the server restarts.
+    </div>
+</div>
+{% endblock %}

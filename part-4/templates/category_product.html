@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ category_name|capitalize }} - Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #edf2f7;
+            max-width: 700px;
+            margin: 50px auto;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        .not-found {
+            background: #fed7d7;
+            padding: 20px;
+            border-radius: 10px;
+            color: #c53030;
+        }
+        nav {
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #edf2f7;
+            border-radius: 5px;
+        }
+        nav a {
+            margin-right: 15px;
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="/links">URL Builder</a>
+        <a href="/product/">Products</a>
+    </nav>
+    <h2>Category: {{ category_name|capitalize }}</h2>
+
+    {% if product %}
+        <h3>Product Details</h3>
+        <p><strong>ID:</strong> {{ product_id }}</p>
+        <p><strong>Name:</strong> {{ product.name }}</p>
+        <p><strong>Price:</strong> ₹{{ product.price }}</p>
+    {% else %}
+        <div class="not-found">
+            Product not found in this category.
+        </div>
+    {% endif %}
+
+    <br>
+    <a href="/category/{{ category_name }}">⬅ Back to Category</a>
+</div>
+
+</body>
+</html>

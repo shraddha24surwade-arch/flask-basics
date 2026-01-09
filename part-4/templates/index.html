@@ -83,10 +83,24 @@
             <a href="/">Home</a>
             <a href="/about/">About</a>
             <a href="/links">URL Builder</a>
+            <a href="/product/">Products</a>
         </nav>
 
         <h1>Dynamic Routes in Flask</h1>
         <p>Learn how to capture values from URLs using <code>&lt;variable&gt;</code> syntax!</p>
+
+        <!-- Search Demo -->
+        <form action="" method="get" onsubmit="searchRedirect(event)">
+            <input type="text" id="query" placeholder="Search here" required>
+            <button type="submit">Search</button>
+        </form>
+        <script>
+            function searchRedirect(event) {
+                event.preventDefault();
+                const query = document.getElementById('query').value;
+                window.location.href = `/search/${query}`;
+            }
+        </script>
 
         <!-- User Profile Demo -->
         <div class="route-demo">
@@ -126,6 +140,33 @@
             <p><strong>Try it:</strong></p>
             <a href="/user/Alice/post/1">Alice's Post 1</a>
             <a href="/user/Bob/post/2">Bob's Post 2</a>
+            <a href="/user/Charlie/post/3">Charlie's Post 2</a>
+        </div>
+
+        <!-- Category Demo -->
+        <div class="route-demo">
+            <h3>4. Category → Product Route</h3>
+            <p>Routes:</p>
+            <ul>
+                <li><code>/category/&lt;category_name&gt;</code></li>
+                <li><code>/category/&lt;category_name&gt;/product/&lt;int:product_id&gt;</code></li>
+            </ul>
+
+            <div class="code-block">
+                @app.route('/category/&lt;category_name&gt;')<br>
+                def show_category(category_name):<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;return render_template('category.html')<br><br>
+
+                @app.route('/category/&lt;category_name&gt;/product/&lt;int:product_id&gt;')<br>
+                def category_product(category_name, product_id):<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;return render_template('category_product.html')
+            </div>
+
+            <p><strong>Try it:</strong></p>
+
+            <!-- Only Categories shown on Home -->
+            <a href="/category/electronics">Electronics</a>
+            <a href="/category/accessories">Accessories</a>
         </div>
 
         <div class="try-it">
